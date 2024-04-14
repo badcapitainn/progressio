@@ -14,17 +14,5 @@ import androidx.compose.ui.Modifier
 fun MainScreen(
 
 ){
-    Surface(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-    ) {
-        Box (
-            modifier = Modifier
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ){
-            Text(text = "Hello Android")
-        }
-    }
+    LoginScreen()
 }

@@ -1,0 +1,88 @@
+package com.example.progressio.components
+
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.dp
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CustomRoundedTextField(
+    fieldValue: String,
+    icon: @Composable () -> Unit,
+){
+    val text = remember { mutableStateOf("") }
+
+    OutlinedTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(18.dp),
+        label = { Text(fieldValue) },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = MaterialTheme.colorScheme.primary,
+            unfocusedBorderColor = MaterialTheme.colorScheme.primary
+        ),
+        value = text.value,
+        onValueChange = { text.value = it },
+        singleLine = true,
+        textStyle = TextStyle(color = Color.Black),
+        shape = RoundedCornerShape(50.dp),
+        leadingIcon = icon
+    )
+}
+
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PasswordOutlinedTextField(
+    fieldValue: String,
+    icon: @Composable () -> Unit
+){
+    val text = remember { mutableStateOf("") }
+    val passwordVisibility = remember { mutableStateOf(false) }
+
+    OutlinedTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(18.dp),
+        label = { Text(fieldValue) } ,
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = MaterialTheme.colorScheme.primary,
+            unfocusedBorderColor = MaterialTheme.colorScheme.primary
+        ),
+        value = text.value,
+        onValueChange = {text.value = it},
+        singleLine = true,
+        textStyle = TextStyle(color = Color.Black),
+        shape = RoundedCornerShape(50.dp),
+        leadingIcon = icon,
+        trailingIcon = {
+            IconButton(onClick = { passwordVisibility.value = !passwordVisibility.value }) {
+                Icon(
+                    imageVector = if (passwordVisibility.value) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
+                    contentDescription = "Toggle password visibility"
+                )
+            }
+        },
+        visualTransformation = if (passwordVisibility.value) VisualTransformation.None else PasswordVisualTransformation()
+    )
+}
