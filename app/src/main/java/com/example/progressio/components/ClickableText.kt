@@ -14,19 +14,14 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun ClickableText(text: String, onClick: () -> Unit) {
-    Box(
-        modifier = Modifier.fillMaxWidth(),
-        contentAlignment = Alignment.Center
-    ){
-        Text(
-            modifier = Modifier.clickable {onClick()},
-            text = text,
-            fontSize = 15.sp,
-            textAlign = TextAlign.Center,
-            color = Color.Blue,
-            textDecoration = TextDecoration.Underline
+    Text(
+        modifier = Modifier.clickable {onClick()},
+        text = text,
+        fontSize = 15.sp,
+        textAlign = TextAlign.Center,
+        color = Color.Blue,
+        textDecoration = TextDecoration.Underline
 
-        )
-    }
+    )
 
 }

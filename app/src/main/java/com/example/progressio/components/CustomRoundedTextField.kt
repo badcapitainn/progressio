@@ -22,6 +22,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.example.progressio.ui.theme.Blue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,16 +35,16 @@ fun CustomRoundedTextField(
     OutlinedTextField(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(18.dp),
+            .padding(vertical = 10.dp, horizontal = 20.dp),
         label = { Text(fieldValue) },
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = MaterialTheme.colorScheme.primary,
-            unfocusedBorderColor = MaterialTheme.colorScheme.primary
+            focusedBorderColor = Blue,
+            unfocusedBorderColor = MaterialTheme.colorScheme.onBackground
         ),
         value = text.value,
         onValueChange = { text.value = it },
         singleLine = true,
-        textStyle = TextStyle(color = Color.Black),
+        textStyle = TextStyle(color = MaterialTheme.colorScheme.onBackground),
         shape = RoundedCornerShape(50.dp),
         leadingIcon = icon
     )
@@ -63,16 +64,16 @@ fun PasswordOutlinedTextField(
     OutlinedTextField(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(18.dp),
+            .padding(vertical = 10.dp, horizontal = 20.dp),
         label = { Text(fieldValue) } ,
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = MaterialTheme.colorScheme.primary,
-            unfocusedBorderColor = MaterialTheme.colorScheme.primary
+            focusedBorderColor = Blue,
+            unfocusedBorderColor = MaterialTheme.colorScheme.onBackground
         ),
         value = text.value,
         onValueChange = {text.value = it},
         singleLine = true,
-        textStyle = TextStyle(color = Color.Black),
+        textStyle = TextStyle(color = MaterialTheme.colorScheme.onBackground),
         shape = RoundedCornerShape(50.dp),
         leadingIcon = icon,
         trailingIcon = {

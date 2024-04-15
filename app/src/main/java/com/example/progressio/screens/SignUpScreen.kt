@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,8 +25,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.progressio.components.ClickableText
 import com.example.progressio.components.CustomRoundedTextField
 import com.example.progressio.components.GradientBox
@@ -37,7 +40,7 @@ import com.example.progressio.ui.theme.Blue
 import com.example.progressio.ui.theme.Tail600
 
 @Composable
-fun LoginScreen(
+fun SignUpScreen(
     navController: NavController
 ){
     GradientBox(
@@ -75,7 +78,7 @@ fun LoginScreen(
                 }
                 //--------
                 Text(
-                    text = "Sign In",
+                    text = "Create New Account",
                     style = MaterialTheme.typography.headlineMedium,
                     color = Color.Black
                 )
@@ -86,6 +89,13 @@ fun LoginScreen(
                     Spacer(modifier = Modifier.fillMaxSize(0.1f))
                 }
                 //--------
+                CustomRoundedTextField(fieldValue = "Username") {
+                    Icon(
+                        Icons.Rounded.Person,
+                        contentDescription = "Username Icon"
+                    )
+
+                }
                 CustomRoundedTextField(fieldValue = "Email") {
                     Icon(
                         Icons.Rounded.Email,
@@ -101,7 +111,7 @@ fun LoginScreen(
                     )
 
                 }
-                GradientButton(text = "Sign In", textColor = Color.White , gradient = Brush.horizontalGradient(
+                GradientButton(text = "Sign Up", textColor = Color.White , gradient = Brush.horizontalGradient(
                     colors = listOf(Blue, Tail600)
                 ) ) {
 
@@ -110,13 +120,14 @@ fun LoginScreen(
                 Row (
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(horizontal = 16.dp),
+                        .padding(16.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ){
-                    Text(text = "Don't have an account yet? ")
-                    ClickableText(text = "Sign Up.") {
-                        navController.navigate(route = Screen.SignUp.route)
+                    Text(text = "Already Have an account? ")
+                    ClickableText(text = "Sign In.") {
+                        navController.navigate(route = Screen.Login.route)
+
                     }
                 }
 
@@ -125,4 +136,10 @@ fun LoginScreen(
         }
 
     }
+}
+
+@Composable
+@Preview
+fun MyScreen(){
+    SignUpScreen(navController = rememberNavController())
 }
