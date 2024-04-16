@@ -19,6 +19,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,15 +36,21 @@ import com.example.progressio.components.GradientBox
 import com.example.progressio.components.GradientButton
 import com.example.progressio.components.PasswordOutlinedTextField
 import com.example.progressio.components.isSmallScreenHeight
+import com.example.progressio.firebase.FirebaseViewModel
 import com.example.progressio.navigation.Screen
 import com.example.progressio.ui.theme.Blue
 import com.example.progressio.ui.theme.Tail600
 
 @Composable
 fun LoginScreen(
-    navController: NavController
+    navController: NavController,
+    vm : FirebaseViewModel
 ){
-    GradientBox(
+    var email by remember{ mutableStateOf("") }
+    var password by remember{ mutableStateOf("") }
+    var emailError by remember{ mutableStateOf(false) }
+    var passwordError by remember{ mutableStateOf(false)}
+        GradientBox(
         modifier = Modifier.fillMaxSize()
     ) {
         Column(
@@ -86,26 +96,52 @@ fun LoginScreen(
                     Spacer(modifier = Modifier.fillMaxSize(0.1f))
                 }
                 //--------
-                CustomRoundedTextField(fieldValue = "Email") {
+                if(emailError){
+                    Text(
+                        text = "Enter Email",
+                        color = Color.Red
+                    )
+                }
+                email = CustomRoundedTextField(fieldValue = "Email") {
                     Icon(
                         Icons.Rounded.Email,
                         contentDescription = "Email Icon"
                     )
 
                 }
+                if(passwordError){
+                    Text(
+                        text = "Enter Password",
+                        color = Color.Red
+                    )
+                }
 
-                PasswordOutlinedTextField(fieldValue = "Password") {
+                password = PasswordOutlinedTextField(fieldValue = "Password") {
                     Icon(
                         Icons.Rounded.Lock,
                         contentDescription = "Password Icon"
                     )
 
                 }
-                GradientButton(text = "Sign In", textColor = Color.White , gradient = Brush.horizontalGradient(
-                    colors = listOf(Blue, Tail600)
-                ) ) {
+                GradientButton(text = "Sign In", textColor = Color.White , gradient = Brush.horizontalGradient(colors = listOf(Blue, Tail600)), onClick = {
+                    if (email.isNotEmpty()){
+                        emailError = false
+                        if (password.isNotEmpty()){
+                            passwordError = false
+                            vm.login(email, password)
+                        }else{
+                            passwordError = true
+                        }
+                    }else{
+                        emailError = true
+                    }
 
+                } )
+                if (vm.signedIn.value){
+                    navController.navigate(route = Screen.Home.route)
                 }
+                vm.signedIn.value = false
+
 
                 Row (
                     modifier = Modifier

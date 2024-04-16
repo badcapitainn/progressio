@@ -5,4 +5,5 @@ sealed class Screen(
 ) {
     object Login : Screen(route = "LoginScreen")
     object SignUp: Screen(route = "SignUpScreen")
+    object  Home: Screen(route = "HomeScreen")
 }
