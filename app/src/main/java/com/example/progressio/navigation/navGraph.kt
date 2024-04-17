@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.example.progressio.firebase.FirebaseViewModel
 import com.example.progressio.screens.HomeScreen
 import com.example.progressio.screens.LoginScreen
+import com.example.progressio.screens.ProfileScreen
 import com.example.progressio.screens.SignUpScreen
 
 @Composable
@@ -33,7 +34,13 @@ fun SetupNavGraph(
         composable(
             route = Screen.Home.route
         ){
-            HomeScreen(navController, vm)
+            HomeScreen()
+        }
+
+        composable(
+            route = Screen.Profile.route
+        ){
+            ProfileScreen()
         }
 
     }
