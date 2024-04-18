@@ -32,6 +32,9 @@ import com.example.progressio.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
+    menuOnClick: ()-> Unit,
+    notificationOnClick: ()-> Unit,
+    profileOnClick: ()-> Unit
 
 ) {
     TopAppBar(
@@ -43,15 +46,15 @@ fun TopBar(
             )
         },
         navigationIcon = {
-            IconButton(onClick = { /* Handle navigation icon click */ }) {
+            IconButton(onClick = menuOnClick) {
                 Icon(Icons.Filled.Menu, contentDescription = "Navigation Menu")
             }
         },
         actions = {
-            IconButton(onClick = { /* Handle notifications icon click */ }) {
+            IconButton(onClick = notificationOnClick) {
                 Icon(Icons.Filled.Notifications, contentDescription = "Notifications")
             }
-            IconButton(onClick = {  }) {
+            IconButton(onClick = profileOnClick) {
                 Icon(Icons.Filled.AccountCircle, contentDescription = "Profile")
             }
         }
