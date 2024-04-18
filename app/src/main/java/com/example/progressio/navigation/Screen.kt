@@ -7,4 +7,5 @@ sealed class Screen(
     object SignUp: Screen(route = "SignUpScreen")
     object  Home: Screen(route = "HomeScreen")
     object Profile: Screen(route = "ProfileScreen")
+    object Project: Screen(route = "ProjectScreen")
 }

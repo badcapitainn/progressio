@@ -43,5 +43,11 @@ fun SetupNavGraph(
             ProfileScreen()
         }
 
+        composable(
+            route = Screen.Project.route
+        ){
+            ProfileScreen()
+        }
+
     }
 }

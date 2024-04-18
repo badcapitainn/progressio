@@ -1,6 +1,5 @@
 package com.example.progressio.screens
 
-import android.app.ActivityManager.TaskDescription
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,7 +13,6 @@ import com.example.progressio.components.TaskCard
 import com.example.progressio.components.TaskDescriptionUI
 import com.example.progressio.components.TaskStatsCard
 import com.example.progressio.components.TopBar
-import com.example.progressio.firebase.FirebaseViewModel
 import com.example.progressio.navigation.Screen
 import androidx.compose.ui.unit.dp
 
@@ -31,8 +29,7 @@ fun HomeScreen(
    ) {
        TopBar(profileOnClick = {navController.navigate(route = Screen.Profile.route)}, menuOnClick = {}, notificationOnClick = {} )
        TaskStatsCard()
-       TaskCard(){}
-
+       TaskCard(buttonOnClick = {navController.navigate(Screen.Project.route)})
        Spacer(modifier = Modifier.height(16.dp))
        TaskDescriptionUI()
    }
