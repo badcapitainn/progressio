@@ -27,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.progressio.R
+import com.example.progressio.ui.theme.Blue
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -47,15 +48,15 @@ fun TopBar(
         },
         navigationIcon = {
             IconButton(onClick = menuOnClick) {
-                Icon(Icons.Filled.Menu, contentDescription = "Navigation Menu")
+                Icon(Icons.Filled.Menu, contentDescription = "Navigation Menu", tint = Blue)
             }
         },
         actions = {
             IconButton(onClick = notificationOnClick) {
-                Icon(Icons.Filled.Notifications, contentDescription = "Notifications")
+                Icon(Icons.Filled.Notifications, contentDescription = "Notifications", tint = Blue)
             }
             IconButton(onClick = profileOnClick) {
-                Icon(Icons.Filled.AccountCircle, contentDescription = "Profile")
+                Icon(Icons.Filled.AccountCircle, contentDescription = "Profile", tint = Blue)
             }
         }
     )
