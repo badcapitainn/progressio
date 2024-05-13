@@ -8,7 +8,9 @@ import com.example.progressio.firebase.FirebaseViewModel
 import com.example.progressio.screens.HomeScreen
 import com.example.progressio.screens.LoginScreen
 import com.example.progressio.screens.ProfileScreen
+import com.example.progressio.screens.ProjectScreen
 import com.example.progressio.screens.SignUpScreen
+import com.example.progressio.screens.SplashScreen
 
 @Composable
 fun SetupNavGraph(
@@ -17,8 +19,14 @@ fun SetupNavGraph(
 ){
     NavHost(
         navController = navController,
-        startDestination = Screen.Login.route
+        startDestination = Screen.Splash.route
     ){
+        composable(
+            route = Screen.Splash.route
+        ){
+            SplashScreen(navController)
+        }
+
         composable(
             route = Screen.Login.route
         ){
@@ -46,7 +54,7 @@ fun SetupNavGraph(
         composable(
             route = Screen.Project.route
         ){
-            ProfileScreen()
+            ProjectScreen()
         }
 
     }

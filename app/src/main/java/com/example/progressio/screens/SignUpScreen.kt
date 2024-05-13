@@ -1,5 +1,6 @@
 package com.example.progressio.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Email
+import androidx.compose.material.icons.rounded.Image
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.CircularProgressIndicator
@@ -70,11 +72,7 @@ fun SignUpScreen(
                 contentAlignment = Alignment.Center
 
             ){
-                Text(
-                    text = "Logo Here",
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = Color.White
-                )
+                Image(imageVector = Icons.Rounded.Image, contentDescription = "Logo here" )
             }
             Column(
                 modifier = Modifier
