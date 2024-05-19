@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.progressio.firebase.FirebaseViewModel
+import com.example.progressio.screens.AddProjectScreen
 import com.example.progressio.screens.HomeScreen
 import com.example.progressio.screens.LoginScreen
 import com.example.progressio.screens.ProfileScreen
@@ -56,7 +57,13 @@ fun SetupNavGraph(
         composable(
             route = Screen.Project.route
         ){
-            ProjectScreen()
+            ProjectScreen(navController)
+        }
+
+        composable(
+            route = Screen.AddProject.route
+        ){
+            AddProjectScreen(navController)
         }
 
     }

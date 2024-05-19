@@ -1,5 +1,6 @@
 package com.example.progressio.components
 
+import android.graphics.drawable.Icon
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -37,5 +39,26 @@ fun GradientButton(
 
     ) {
         Text(text = text, color = textColor)
+    }
+}
+
+@Composable
+fun IconGradientButton(
+    icon: ImageVector,
+    gradient: Brush,
+    onClick: () -> Unit
+){
+    Button(
+        modifier = Modifier
+            .fillMaxWidth(0.4f)
+            .padding(16.dp)
+            .clip(shape = RoundedCornerShape(60.dp))
+            .background(gradient),
+        onClick = onClick ,
+        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+
+
+        ) {
+        icon
     }
 }

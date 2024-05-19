@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -35,28 +36,32 @@ import com.example.progressio.ui.theme.Blue
 fun TopBar(
     menuOnClick: ()-> Unit,
     notificationOnClick: ()-> Unit,
-    profileOnClick: ()-> Unit
+    profileOnClick: ()-> Unit,
+    firstIcon: ImageVector = Icons.Filled.Menu,
+    text: String = stringResource(R.string.app_name),
+    secondIcon: ImageVector = Icons.Filled.Notifications,
+    thirdIcon: ImageVector = Icons.Filled.AccountCircle
 
 ) {
     TopAppBar(
         title = {
             Text(
-                text = stringResource(R.string.app_name),
+                text = text,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
         },
         navigationIcon = {
             IconButton(onClick = menuOnClick) {
-                Icon(Icons.Filled.Menu, contentDescription = "Navigation Menu", tint = Blue)
+                Icon(firstIcon, contentDescription = "", tint = Blue)
             }
         },
         actions = {
             IconButton(onClick = notificationOnClick) {
-                Icon(Icons.Filled.Notifications, contentDescription = "Notifications", tint = Blue)
+                Icon(secondIcon, contentDescription = "", tint = Blue)
             }
             IconButton(onClick = profileOnClick) {
-                Icon(Icons.Filled.AccountCircle, contentDescription = "Profile", tint = Blue)
+                Icon(thirdIcon, contentDescription = "", tint = Blue)
             }
         }
     )
