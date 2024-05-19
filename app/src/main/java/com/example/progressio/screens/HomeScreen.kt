@@ -15,12 +15,14 @@ import com.example.progressio.components.TaskStatsCard
 import com.example.progressio.components.TopBar
 import com.example.progressio.navigation.Screen
 import androidx.compose.ui.unit.dp
+import com.example.progressio.util.SharedViewModel
 
 
 @Composable
 
 fun HomeScreen(
   navController: NavController,
+  sharedViewModel: SharedViewModel
 //    vm : FirebaseViewModel
 ) {
    Column(
@@ -39,5 +41,6 @@ fun HomeScreen(
 @Composable
 fun HomeScreenPreview() {
     val navController = rememberNavController()
-    HomeScreen(navController = navController)
+    val sharedViewModel = SharedViewModel()
+    HomeScreen(navController = navController, sharedViewModel = sharedViewModel)
 }

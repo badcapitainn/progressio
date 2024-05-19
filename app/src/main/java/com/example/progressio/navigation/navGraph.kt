@@ -11,11 +11,13 @@ import com.example.progressio.screens.ProfileScreen
 import com.example.progressio.screens.ProjectScreen
 import com.example.progressio.screens.SignUpScreen
 import com.example.progressio.screens.SplashScreen
+import com.example.progressio.util.SharedViewModel
 
 @Composable
 fun SetupNavGraph(
     navController: NavHostController,
-    vm: FirebaseViewModel
+    vm: FirebaseViewModel,
+    sharedViewModel: SharedViewModel
 ){
     NavHost(
         navController = navController,
@@ -42,7 +44,7 @@ fun SetupNavGraph(
         composable(
             route = Screen.Home.route
         ){
-            HomeScreen(navController)
+            HomeScreen(navController, sharedViewModel)
         }
 
         composable(
