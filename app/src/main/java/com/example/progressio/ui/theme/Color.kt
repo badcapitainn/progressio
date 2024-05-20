@@ -13,3 +13,6 @@ val Pink40 = Color(0xFF7D5260)
 val Blue = Color(0xFF0D4C92)
 val Tail600 = Color(0xFF59C1BD)
 val Tail700 = Color(0xFF238F8B)
+
+val Orange = Color(0xFFFF9800)
+val LimeGreen = Color(0xFF8BC34A)
